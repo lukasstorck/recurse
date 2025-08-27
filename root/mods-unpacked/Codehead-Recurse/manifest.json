@@ -1,23 +1,28 @@
 {
-    "name": "Recurse",
-    "namespace": "Codehead",
-    "version_number": "1.1.0",
-    "description": "The curse level for already cursed items is rerolled.",
-    "website_url": "https://github.com/BrotatoMods/Brotato-Example-Mods",
-    "dependencies": [],
-    "extra": {
-        "godot": {
-            "incompatibilities": [],
-            "authors": [
-                "Codehead"
-            ],
-            "compatible_mod_loader_version": [
-                "3.0.0"
-            ],
-            "compatible_game_version": [
-                "0.6.1.6"
-            ],
-            "config_defaults": {}
-        }
-    }
+	"name": "Recurse",
+	"namespace": "Codehead",
+	"version_number": "1.0.0",
+	"description": "The curse level for already cursed items is rerolled.\n\nWhen a player has the \"fish hook\" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled. The curse factor can only increase and all other normal curse functionality is maintained.",
+	"website_url": "https://github.com/lukasstorck/recurse",
+	"dependencies": [],
+	"extra": {
+		"godot": {
+			"authors": [
+				"codehead"
+			],
+			"optional_dependencies": [],
+			"compatible_game_version": [
+				"1.1.11.3"
+			],
+			"compatible_mod_loader_version": [
+				"6.0.0"
+			],
+			"incompatibilities": [],
+			"load_before": [],
+			"tags": [],
+			"config_schema": {},
+			"description_rich": "",
+			"image": null
+		}
+	}
 }
