@@ -7,3 +7,5 @@ The curse factor can only increase and all other normal curse functionality is m
 Should respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.
 
 Pairs well with [Curse Indicator](https://steamcommunity.com/sharedfiles/filedetails/?id=3372276979) to keep track of the cursing progress.
+
+Download from steam workshop: [Recurse](https://steamcommunity.com/sharedfiles/filedetails/?id=3556898502)
