@@ -8,7 +8,6 @@ func recurse_player_locked_items(player_index: int) -> void:
 	var locked_items: Array = RunData.locked_shop_items[player_index]
 
 	for i in locked_items.size():
-		var item = locked_items[i][0]
 		var chance_success = Utils.get_chance_success((RunData.players_data[player_index].curse_locked_shop_items_pity + curse_locked_items) / 100.0)
 		if locked_items[i][0].is_cursed and chance_success:
 			locked_items[i][0] = dlc_data.recurse_item(locked_items[i][0], player_index)
