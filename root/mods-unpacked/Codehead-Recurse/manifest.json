@@ -20,7 +20,24 @@
 			"incompatibilities": [],
 			"load_before": [],
 			"tags": [],
-			"config_schema": {},
+			"config_schema": {
+				"title": "Config_recurse",
+				"description": "Config for Recurse",
+				"type": "object",
+				"properties": {
+					"RECURSE_MODE": {
+						"type": "string",
+						"enum": [
+							"off",
+							"simple",
+							"level_based",
+							"improving"
+						],
+						"default": "simple",
+						"description": "Specifies which mode of recurse should be applied"
+					}
+				}
+			},
 			"description_rich": "",
 			"image": null
 		}

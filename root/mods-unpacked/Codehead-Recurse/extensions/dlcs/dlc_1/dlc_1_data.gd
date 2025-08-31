@@ -1,11 +1,6 @@
 extends "res://dlcs/dlc_1/dlc_1_data.gd"
 
-const MOD_ID = "Codehead-Recurse"
-var recurse_mode: String = "improving"
 var precalculated_curse_factor: float = -1.0
-
-func set_recurse_mode(mode: String) -> void:
-	recurse_mode = mode
 
 func get_random_curse_factor(min_curse_factor: float) -> float:
 	var rng = RandomNumberGenerator.new()
@@ -23,7 +18,7 @@ func _get_cursed_item_effect_modifier(turn_randomization_off: bool = false, min_
 	return ._get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
 
 func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentData:
-	if recurse_mode == "off":
+	if RunData.recurse_mode == "off":
 		return item_data
 
 	# find base version of item
@@ -34,22 +29,21 @@ func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentDat
 		base_item = ItemService.get_element(ItemService.weapons, item_data.my_id)
 	
 
-	# apply curse that is atleast as strong as before
 	var recursed_item: ItemParentData
 	
-	if recurse_mode == "simple":
+	if RunData.recurse_mode == "simple":
 		# reroll the curse factor, but discard values that are lower than before
 		recursed_item = .curse_item(base_item, player_index, false, item_data.curse_factor)
-	elif recurse_mode == "level_based":
+	elif RunData.recurse_mode == "level_based":
 		# chose the non-randomized, level based curse factor (if it is higher than before)
 		recursed_item = .curse_item(base_item, player_index, true, item_data.curse_factor)
-	elif recurse_mode == "improving":
+	elif RunData.recurse_mode == "improving":
 		# roll a random curse factor between the current and maximal achievable curse value
 		# pre-set a curse factor, which overrides the modified random function used in .curse_item()
 		precalculated_curse_factor = get_random_curse_factor(item_data.curse_factor)
 		recursed_item = .curse_item(base_item, player_index)
 		precalculated_curse_factor = -1.0 # reset to get normal behavior
 	else:
-		ModLoaderLog.warning("unknown recurse_mode specified: " + recurse_mode, MOD_ID)
+		ModLoaderLog.warning("unknown recurse_mode specified: %s" % RunData.recurse_mode, RunData.RecurseSettingsHandler.MOD_ID)
 
 	return recursed_item
