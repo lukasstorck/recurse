@@ -8,11 +8,10 @@ func _init():
 
 	install_script_extensions()
 
-	# load settings interface
-	var RecurseSettingsHandler = load(MOD_PATH.plus_file("settings_handler.gd")).new()
-	RecurseSettingsHandler.name = "RecurseSettingsHandler"
-	add_child(RecurseSettingsHandler)
-	RecurseSettingsHandler.set_mod_id(MOD_ID)
+	# load config interface
+	var ConfigHandler = load(MOD_PATH.plus_file("config_handler.gd")).new()
+	ConfigHandler.name = "RecurseConfigHandler"
+	add_child(ConfigHandler)
 
 func install_script_extensions() -> void:
 	var extensions_dir_path = MOD_PATH.plus_file("extensions")
