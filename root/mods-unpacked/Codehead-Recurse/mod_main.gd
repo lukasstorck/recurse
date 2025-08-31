@@ -1,13 +1,23 @@
 extends Node
 
 const MOD_ID = "Codehead-Recurse"
+var MOD_PATH = ModLoaderMod.get_unpacked_dir().plus_file(MOD_ID)
 
 func _init():
 	ModLoaderLog.info("Init", MOD_ID)
 
-	# dlc modifications are loaded in progress_data
-	ModLoaderMod.install_script_extension("res://mods-unpacked/Codehead-Recurse/extensions/singletons/progress_data.gd")
-	ModLoaderMod.install_script_extension("res://mods-unpacked/Codehead-Recurse/extensions/ui/menus/shop/base_shop.gd")
+	install_script_extensions()
+
+func install_script_extensions() -> void:
+	var extensions_dir_path = MOD_PATH.plus_file("extensions")
+
+	var extensions = [
+		"singletons/progress_data.gd", # dlc modifications are loaded in progress_data
+		"ui/menus/shop/base_shop.gd",
+	]
+
+	for extension in extensions:
+		ModLoaderMod.install_script_extension(extensions_dir_path.plus_file(extension))
 
 func _ready():
 	ModLoaderLog.info("Ready", MOD_ID)
