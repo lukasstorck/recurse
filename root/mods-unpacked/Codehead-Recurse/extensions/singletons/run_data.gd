@@ -1,6 +1,6 @@
 extends "res://singletons/run_data.gd"
 
-var recurse_mode: String = "simple"
+var recurse_mode: int = 1 # mode = simple
 
 onready var RecurseSettingsHandler = get_node("/root/ModLoader/Codehead-Recurse/RecurseSettingsHandler")
 

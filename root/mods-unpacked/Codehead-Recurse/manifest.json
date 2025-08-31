@@ -26,15 +26,14 @@
 				"type": "object",
 				"properties": {
 					"RECURSE_MODE": {
-						"type": "string",
-						"enum": [
-							"off",
-							"simple",
-							"level_based",
-							"improving"
-						],
-						"default": "simple",
-						"description": "Specifies which mode of recurse should be applied"
+						"type": "number",
+						"default": 1,
+						"minimum": 0,
+						"maximum": 3,
+						"multipleOf": 1,
+						"format": "%1d",
+						"tooltip": "Specifies which mode of recurse should be applied (0=off: no recruse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)",
+						"description": "Specifies which mode of recurse should be applied (0=off: no recruse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)"
 					}
 				}
 			},

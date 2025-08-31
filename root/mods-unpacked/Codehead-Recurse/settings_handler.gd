@@ -2,7 +2,7 @@ extends Node
 
 var MOD_ID: String
 const FALLBACK_CONFIG = {
-	"RECURSE_MODE": "simple"
+	"RECURSE_MODE": 1, # mode = simple
 }
 
 func set_mod_id(mod_id: String) -> void:
