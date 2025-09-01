@@ -18,7 +18,6 @@ func install_script_extensions() -> void:
 
 	var extensions = [
 		"singletons/progress_data.gd", # dlc modifications are loaded in progress_data
-		"singletons/run_data.gd",
 		"ui/menus/shop/base_shop.gd",
 	]
 

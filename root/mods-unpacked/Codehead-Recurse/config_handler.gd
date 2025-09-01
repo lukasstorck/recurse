@@ -2,26 +2,29 @@ extends Node
 
 onready var ModMain = get_node_or_null("/root/ModLoader/Codehead-Recurse")
 onready var ModsConfigInterface = get_node_or_null("/root/ModLoader/dami-ModOptions/ModsConfigInterface")
-onready var RecurseSettingsHandler = get_node("/root/ModLoader/Codehead-Recurse/RecurseSettingsHandler")
 
 func _ready():
 	if ModsConfigInterface != null:
 		ModsConfigInterface.connect("setting_changed", self, "on_config_changed")
 	
-	var config = get_config()
-	for key in config.data.keys():
-		if ModsConfigInterface != null:
+	var config = load_config()
+	ProgressData.mod_settings.merge(config.data)
+	ProgressData.mod_settings.recurse_mod_id = ModMain.MOD_ID
+
+	if ModsConfigInterface != null:
+		# set values in ModsConfigInterface
+		# this also calls update_config_value which would not be necessary, as the
+		# values are already set from above, but also does no harm ._.
+		for key in config.data.keys():
 			ModsConfigInterface.on_setting_changed(key, config.data[key], ModMain.MOD_ID)
-		else:
-			RunData.set(key.to_lower(), config.data[key])
 
 func on_config_changed(setting_name: String, value, mod_id: String):
 	if mod_id == ModMain.MOD_ID:
 		update_config_value(setting_name, value)
 
-func get_config(key: String = "") -> ModConfig:
+func load_config(key: String = "") -> ModConfig:
 	if key != "":
-		return get_config().data[key]
+		return load_config().data[key]
 
 	var version = ModLoaderStore.mod_data[ModMain.MOD_ID].manifest.version_number
 	var config = ModLoaderConfig.get_config(ModMain.MOD_ID, version)
@@ -39,7 +42,7 @@ func get_config(key: String = "") -> ModConfig:
 	return config
 
 func update_config_value(key: String, value):
-	var config = get_config()
+	var config = load_config()
 
 	if !config.data.has(key):
 		return
@@ -49,8 +52,7 @@ func update_config_value(key: String, value):
 	ModLoaderConfig.update_config(config)
 
 	# update value in memory
-	RunData.set(key.to_lower(), value)
+	ProgressData.mod_settings[key] = value
 
 # TODO:
-# - switch from RunData.variables to ProgressData.settings.MOD_ID.variables as dict
 # - add translation

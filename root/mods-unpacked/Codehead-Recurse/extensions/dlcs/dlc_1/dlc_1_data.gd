@@ -22,7 +22,7 @@ func _get_cursed_item_effect_modifier(turn_randomization_off: bool = false, min_
 	return ._get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
 
 func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentData:
-	if RunData.recurse_mode == RECURSE_MODE.OFF:
+	if ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.OFF:
 		return item_data
 
 	# find base version of item
@@ -35,19 +35,19 @@ func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentDat
 
 	var recursed_item: ItemParentData
 	
-	if RunData.recurse_mode == RECURSE_MODE.SIMPLE:
+	if ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.SIMPLE:
 		# reroll the curse factor, but discard values that are lower than before
 		recursed_item = .curse_item(base_item, player_index, false, item_data.curse_factor)
-	elif RunData.recurse_mode == RECURSE_MODE.LEVEL_BASED:
+	elif ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.LEVEL_BASED:
 		# chose the non-randomized, level based curse factor (if it is higher than before)
 		recursed_item = .curse_item(base_item, player_index, true, item_data.curse_factor)
-	elif RunData.recurse_mode == RECURSE_MODE.IMPROVING:
+	elif ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.IMPROVING:
 		# roll a random curse factor between the current and maximal achievable curse value
 		# pre-set a curse factor, which overrides the modified random function used in .curse_item()
 		precalculated_curse_factor = get_random_curse_factor(item_data.curse_factor)
 		recursed_item = .curse_item(base_item, player_index)
 		precalculated_curse_factor = -1.0 # reset to get normal behavior
 	else:
-		ModLoaderLog.warning("unknown recurse_mode specified: %s" % str(RunData.recurse_mode), RunData.RecurseSettingsHandler.MOD_ID)
+		ModLoaderLog.warning("unknown recurse_mode specified: %s" % str(RunData.recurse_mode), ProgressData.mod_settings.recurse_mod_id)
 
 	return recursed_item

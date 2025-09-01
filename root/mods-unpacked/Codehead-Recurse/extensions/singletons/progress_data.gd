@@ -1,5 +1,7 @@
 extends "res://singletons/progress_data.gd"
 
+var mod_settings: Dictionary = {}
+
 func load_dlc_pcks() -> void:
 	.load_dlc_pcks()
 	
