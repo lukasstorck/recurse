@@ -14,6 +14,6 @@ Mod Options:
   - 3: asymptotic: roll a new curse factor between the current and the maximal possible value (maximum at wave 20: 110%)
 
 Pairs well with [Curse Indicator](https://steamcommunity.com/sharedfiles/filedetails/?id=3372276979) to keep track of the cursing progress.
-Can be configured with [ModOptions](https://steamcommunity.com/workshop/filedetails/?id=2944608034).
+Can be configured with [Mod Options](https://steamcommunity.com/workshop/filedetails/?id=2944608034).
 
 Download from steam workshop: [Recurse](https://steamcommunity.com/sharedfiles/filedetails/?id=3556898502)
