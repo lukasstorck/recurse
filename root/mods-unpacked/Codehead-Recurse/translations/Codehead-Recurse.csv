@@ -1,0 +1,3 @@
+,en
+RECURSE_MODE,Recurse Operating Mode
+RECURSE_MODE_INFO, "Specifies which mode of recurse should be applied\n0=off: no recurse mechanism\n1=simple: reroll curse and replace if better\n2=level_based: use unrandomized level-based curse modifier if better\n3=improving: roll new curse modifier between current and maximum achievable curse value"

@@ -32,8 +32,8 @@
 						"maximum": 3,
 						"multipleOf": 1,
 						"format": "%1d",
-						"tooltip": "Specifies which mode of recurse should be applied (0=off: no recruse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)",
-						"description": "Specifies which mode of recurse should be applied (0=off: no recruse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)"
+						"tooltip": "RECURSE_MODE_INFO",
+						"description": "Specifies which mode of recurse should be applied (0=off: no recurse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)"
 					}
 				}
 			},

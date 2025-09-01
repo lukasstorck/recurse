@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://mods-unpacked/Codehead-Recurse/translations/Codehead-Recurse.en.translation" ]
+
+source_file="res://mods-unpacked/Codehead-Recurse/translations/Codehead-Recurse.csv"
+dest_files=[ "res://mods-unpacked/Codehead-Recurse/translations/Codehead-Recurse.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

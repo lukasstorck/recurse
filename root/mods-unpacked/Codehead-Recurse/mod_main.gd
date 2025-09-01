@@ -7,6 +7,7 @@ func _init():
 	ModLoaderLog.info("Init", MOD_ID)
 
 	install_script_extensions()
+	add_translations()
 
 	# load config interface
 	var ConfigHandler = load(MOD_PATH.plus_file("config_handler.gd")).new()
@@ -23,6 +24,16 @@ func install_script_extensions() -> void:
 
 	for extension in extensions:
 		ModLoaderMod.install_script_extension(extensions_dir_path.plus_file(extension))
+
+func add_translations() -> void:
+	var translations_dir_path = MOD_PATH.plus_file("translations")
+	
+	var translations = [
+		"en",
+	]
+	
+	for translation in translations:
+		ModLoaderMod.add_translation(translations_dir_path.plus_file("%s.%s.translation" % [MOD_ID, translation]))
 
 func _ready():
 	ModLoaderLog.info("Ready", MOD_ID)
