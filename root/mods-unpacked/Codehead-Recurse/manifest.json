@@ -2,7 +2,7 @@
 	"name": "Recurse",
 	"namespace": "Codehead",
 	"version_number": "1.1.0",
-	"description": "The curse level for already cursed items is rerolled.\n\nWhen a player has the \"fish hook\" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled.\nThe curse factor can only increase and all other normal curse functionality is maintained.\nShould respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.\n\nPairs well with \"Curse Indicator\" to keep track of the cursing progress.",
+	"description": "The curse level for already cursed items is rerolled.\n\nWhen a player has the \"fish hook\" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled.\nThe curse factor can only increase and all other normal curse functionality is maintained.\n\nOptions:\n  Recurse Mode\n    - 0: off\n    - 1: default reroll\n    - 2: fixed level-based\n    - 3: random between current and max curse\n\nShould respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.\n\nPairs well with \"Curse Indicator\" to keep track of the cursing progress.",
 	"website_url": "https://github.com/lukasstorck/recurse",
 	"dependencies": [],
 	"extra": {
@@ -33,7 +33,7 @@
 						"multipleOf": 1,
 						"format": "%1d",
 						"tooltip": "RECURSE_MODE_INFO",
-						"description": "Specifies which mode of recurse should be applied (0=off: no recurse mechanism, 1=simple: reroll curse and replace if better, 2=level_based: use unrandomized level-based curse modifier if better, 3=improving: roll new curse modifier between current and maximum achievable curse value)"
+						"description": "0: off\n1: default reroll\n2: fixed level-based\n3: random between current and max curse"
 					}
 				}
 			},
