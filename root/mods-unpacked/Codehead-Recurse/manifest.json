@@ -10,7 +10,9 @@
 			"authors": [
 				"codehead"
 			],
-			"optional_dependencies": [],
+			"optional_dependencies": [
+				"dami-ModOptions"
+			],
 			"compatible_game_version": [
 				"1.1.11.3"
 			],

@@ -16,6 +16,9 @@ func _ready():
 		# this also calls update_config_value which would not be necessary, as the
 		# values are already set from above, but also does no harm ._.
 		for key in config.data.keys():
+			# we assume ModOptions is loaded before as set in manifest by optional dependencies
+			# otherwise this will lead to an error in ModOptions, as the config
+			# for this mod is not initialized
 			ModsConfigInterface.on_setting_changed(key, config.data[key], ModMain.MOD_ID)
 
 func on_config_changed(setting_name: String, value, mod_id: String):
