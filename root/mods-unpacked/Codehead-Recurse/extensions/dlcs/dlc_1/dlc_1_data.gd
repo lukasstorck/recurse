@@ -3,15 +3,17 @@ extends "res://dlcs/dlc_1/dlc_1_data.gd"
 var precalculated_curse_factor: float = -1.0
 
 enum RECURSE_MODE {
-	OFF, SIMPLE, LEVEL_BASED, IMPROVING
+	OFF, SIMPLE, LEVEL_BASED, IMPROVING, FULL, OVERCHARGED
 }
 
-func get_random_curse_factor(min_curse_factor: float) -> float:
-	var rng = RandomNumberGenerator.new()
+func get_current_max_curse() -> float:
 	var wave_basis = RunData.current_wave
 	var wave_modifier = cursed_item_percent_modifier_increase_each_wave * min(20, (wave_basis - 1))
 	var max_modifier = cursed_item_base_percent_modifier + wave_modifier + cursed_item_random_percent_modifier
-	var max_curse_factor = max_modifier / 100.0
+	return max_modifier / 100.0
+
+func get_random_curse_factor(min_curse_factor: float, max_curse_factor: float) -> float:
+	var rng = RandomNumberGenerator.new()
 	var curse_factor = rng.randf_range(min_curse_factor, max_curse_factor)
 	return stepify(curse_factor, 0.01)
 
@@ -44,7 +46,19 @@ func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentDat
 	elif ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.IMPROVING:
 		# roll a random curse factor between the current and maximal achievable curse value
 		# pre-set a curse factor, which overrides the modified random function used in .curse_item()
-		precalculated_curse_factor = get_random_curse_factor(item_data.curse_factor)
+		var max_curse_factor = get_current_max_curse()
+		precalculated_curse_factor = get_random_curse_factor(item_data.curse_factor, max_curse_factor)
+		recursed_item = .curse_item(base_item, player_index)
+		precalculated_curse_factor = -1.0 # reset to get normal behavior
+	elif ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.FULL:
+		# always set the curse factor to the highest possible level
+		precalculated_curse_factor = get_current_max_curse()
+		recursed_item = .curse_item(base_item, player_index)
+		precalculated_curse_factor = -1.0 # reset to get normal behavior
+	elif ProgressData.mod_settings.RECURSE_MODE == RECURSE_MODE.OVERCHARGED:
+		# roll a random curse factor between the curent and current + 50% curse value
+		# pre-set a curse factor, which overrides the modified random function used in .curse_item()
+		precalculated_curse_factor = get_random_curse_factor(item_data.curse_factor, item_data.curse_factor + 0.5)
 		recursed_item = .curse_item(base_item, player_index)
 		precalculated_curse_factor = -1.0 # reset to get normal behavior
 	else:
