@@ -1,3 +1,9 @@
 keys,en
 RECURSE_MODE,Recurse Mode
-RECURSE_MODE_INFO, "0: off, 1: default reroll\n2: fixed level-based\n3: random between current and max curse\n4: set to max curse\n5: randomly improve by up to 50%pt"
+RECURSE_MODE_INFO, "1: default reroll\n2: fixed level-based\n3: random between current and max curse\n4: set to max curse\n5: randomly improve by up to 50%pt"
+RECURSE_ENABLED,Recurse Enabled
+RECURSE_ENABLED_INFO,enable Recurse behavior
+RECURSE_IGNORE_CURSE_CHANCE,Recurse Ignore Curse Chance
+RECURSE_IGNORE_CURSE_CHANCE_INFO,always recurse locked and already cursed items
+RECURSE_DEBUG,Recurse Debug
+RECURSE_DEBUG_INFO,enable debug messages for Recurse in godot.log

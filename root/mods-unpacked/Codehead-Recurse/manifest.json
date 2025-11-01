@@ -1,7 +1,7 @@
 {
 	"name": "Recurse",
 	"namespace": "Codehead",
-	"version_number": "1.2.0",
+	"version_number": "1.3.0",
 	"description": "The curse level for already cursed items is rerolled.\n\nWhen a player has the \"fish hook\" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled.\nThe curse factor can only increase and all other normal curse functionality is maintained.\n\nOptions:\n  Recurse Mode\n    - 0: off\n    - 1: default reroll\n    - 2: fixed level-based\n    - 3: random between current and max curse\n    - 4: set to max curse\n    - 5: randomly improve by up to 50%pt\n\nShould respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.\n\nPairs well with \"Curse Indicator\" to keep track of the cursing progress.",
 	"website_url": "https://github.com/lukasstorck/recurse",
 	"dependencies": [],
@@ -27,15 +27,33 @@
 				"description": "Config for Recurse",
 				"type": "object",
 				"properties": {
+					"RECURSE_ENABLED": {
+						"type": "boolean",
+						"default": true,
+						"tooltip": "RECURSE_ENABLED_INFO",
+						"description": "enable Recurse behavior"
+					},
 					"RECURSE_MODE": {
 						"type": "number",
 						"default": 1,
-						"minimum": 0,
+						"minimum": 1,
 						"maximum": 5,
 						"multipleOf": 1,
 						"format": "%1d",
 						"tooltip": "RECURSE_MODE_INFO",
-						"description": "0: off\n1: default reroll\n2: fixed level-based\n3: random between current and max curse\n4: set to max curse\n5: randomly improve by up to 50%pt"
+						"description": "1: default reroll\n2: fixed level-based\n3: random between current and max curse\n4: set to max curse\n5: randomly improve by up to 50%pt"
+					},
+					"RECURSE_IGNORE_CURSE_CHANCE": {
+						"type": "boolean",
+						"default": false,
+						"tooltip": "RECURSE_IGNORE_CURSE_CHANCE_INFO",
+						"description": "always recurse locked and already cursed items"
+					},
+					"RECURSE_DEBUG": {
+						"type": "boolean",
+						"default": true,
+						"tooltip": "RECURSE_DEBUG_INFO",
+						"description": "enable debug messages for Recurse in godot.log"
 					}
 				}
 			},

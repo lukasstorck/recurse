@@ -7,6 +7,7 @@ The curse factor can only increase and all other normal curse functionality is m
 Should respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.
 
 Mod Options:
+- Recurse Enabled: enable Recurse behavior (default: true)
 - Recurse Mode:
   - 0: off: locked, already cursed items are not modified
   - 1: default reroll: use the normal curse mechanic and replace item when new curse factor is higher than before
@@ -15,6 +16,8 @@ Mod Options:
   - 4: set curse factor for already cursed items to current maximum curse level (maximum at wave 20: 110%)
   - 5: random infinite improvement: roll new curse factor between the current value and current + 50%
     - e.g. locked item has 70% curse: new value is rolled between 70% and 120% (can exceed the usually maximum of 110%)
+- Recurse Ignore Curse Chance: always recurse locked and already cursed items (default: false)
+- Recurse Debug: enable debug messages for Recurse in godot.log (default: true)
 
 
 Pairs well with [Curse Indicator](https://steamcommunity.com/sharedfiles/filedetails/?id=3372276979) to keep track of the cursing progress.
