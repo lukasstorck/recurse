@@ -19,7 +19,8 @@ func recurse_player_locked_items(player_index: int) -> void:
 
 		potential_recursable_items += 1
 
-		var chance_success = Utils.get_chance_success((RunData.players_data[player_index].curse_locked_shop_items_pity + curse_locked_items) / 100.0)
+		var current_curse_chance = RunData.players_data[player_index].curse_locked_shop_items_pity + curse_locked_items
+		var chance_success = Utils.get_chance_success(current_curse_chance / 100.0)
 		if ProgressData.mod_settings.RECURSE_IGNORE_CURSE_CHANCE:
 			chance_success = true
 
@@ -34,12 +35,16 @@ func recurse_player_locked_items(player_index: int) -> void:
 				var old_item_name = locked_cursed_item.name
 				var old_item_curse_factor = locked_cursed_item.curse_factor * 100
 				var new_item_curse_factor = recursed_item.curse_factor * 100
-				var message = "Recurse Event for %s in slot %s (curse factor %s%%-> %s%%)" % [old_item_name, str(i), old_item_curse_factor, new_item_curse_factor]
+				var message = "Recurse Event for %s in slot %s (curse factor %s%% -> %s%%)" % [old_item_name, str(i), old_item_curse_factor, new_item_curse_factor]
 				ModLoaderLog.info(message, ProgressData.mod_settings.recurse_mod_id)
 	
 	if ProgressData.mod_settings.RECURSE_DEBUG:
 		var message = "%s out of %s suitable items (locked and already cursed) were recursed for player %s" % [recursed_items, potential_recursable_items, player_index]
 		ModLoaderLog.info(message, ProgressData.mod_settings.recurse_mod_id)
+		if potential_recursable_items > 0 and recursed_items == 0:
+			var current_curse_chance = RunData.players_data[player_index].curse_locked_shop_items_pity + curse_locked_items
+			message = "The current curse chance for player %s is at %s%%" % [player_index, current_curse_chance]
+			ModLoaderLog.info(message, ProgressData.mod_settings.recurse_mod_id)
 
 
 func _on_tree_exited() -> void:

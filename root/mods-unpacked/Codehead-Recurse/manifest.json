@@ -1,7 +1,7 @@
 {
 	"name": "Recurse",
 	"namespace": "Codehead",
-	"version_number": "1.3.0",
+	"version_number": "1.3.1",
 	"description": "The curse level for already cursed items is rerolled.\n\nWhen a player has the \"fish hook\" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled.\nThe curse factor can only increase and all other normal curse functionality is maintained.\n\nOptions:\n  Recurse Mode\n    - 0: off\n    - 1: default reroll\n    - 2: fixed level-based\n    - 3: random between current and max curse\n    - 4: set to max curse\n    - 5: randomly improve by up to 50%pt\n\nShould respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.\n\nPairs well with \"Curse Indicator\" to keep track of the cursing progress.",
 	"website_url": "https://github.com/lukasstorck/recurse",
 	"dependencies": [],
