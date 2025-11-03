@@ -39,16 +39,21 @@ How much an item improves depends on the **curse factor** assigned to the item, 
 Only not yet cursed items (i.e. *regular* items) can become cursed and once an item is cursed its stats are fixed, unless the Recurse behavior of this mod is active.
 
 **Curse Chance**:
-The curse chance is the sum of all the individual curse chances of the obtained *Fish Hook* items plus a **pity bonus**, which increases if no items were previously cursed. Only at 100% curse chance an item is guaranteed to become cursed.
+The curse chance is the sum of all the individual curse chances of the obtained *Fish Hook* items plus a **pity bonus**, which increases if no items were previously cursed.
+Only at 100% curse chance an item is guaranteed to become cursed.
 
 **Pity Bonus**:
-The pity bonus starts at 0% and increases each time you enter the shop if no items were cursed in the previous round. It increases by 25% of the curse chance for every regular locked item (`added pity bonus = curse chance * number of locked regular items / 4`). Note that here the pity bonus is excluded from the curse chance calculation. The pity bonus is reset to 0% as soon as the first item is cursed.
+The pity bonus starts at 0% and increases each time you enter the shop if no items were cursed in the previous round.
+It increases by 25% of the curse chance for every regular locked item (`added pity bonus = curse chance * number of locked regular items / 4`).
+Note that here the pity bonus is excluded from the curse chance calculation.
+The pity bonus is reset to 0% as soon as the first item is cursed.
 
 **Curse Factor**:
 The curse factor (sometimes called curse strength) is the factor by how much a cursed item has been improved.
 It is the sum of a constant 40% base value and two modifier components.
 The first modifier is a uniform random value between -30% and +30%.
-The second modifier increases with each wave by 2%pt up to wave 21. So, 0% at the first wave up to 40% at wave 21 and higher.
+The second modifier increases with each wave by 2%pt up to wave 21.
+So, 0% at the first wave up to 40% at wave 21 and higher.
 `curse factor = 40% + random modifier (-30% to 30%) + wave bonus (up to 40%)`
 This means, on the first wave the possible curse factor values lie between 10% and 70%.
 At wave 20 or above the possible value are within 50% and 110%.
@@ -56,9 +61,11 @@ At wave 20 or above the possible value are within 50% and 110%.
 **Example**:  
 Let's assume the the player is at wave 15 and has obtained the cursed *Fish Hook* (38% curse factor, i.e. 28% curse chance) given by the *Creature* character and an additional regular *Fish Hook* (0% curse factor, i.e. 20% curse chance), which add up to a curse chance of 48%.
 The player has locked three out of four items, but the first item is already cursed.
-Currently the pity bonus is at 0%. So there is a 48% chance for the second and third item each to get cursed.
+Currently the pity bonus is at 0%.
+So there is a 48% chance for the second and third item each to get cursed.
 
-In our scenaro the player is unlucky and both items were not cursed this round. This means that the pity bonus increases by 24%pt.
+In our scenaro the player is unlucky and both items were not cursed this round.
+This means that the pity bonus increases by 24%pt.
 The player is to poor to buy anything and the shop selection stays the same.
 As the player starts the next round, the game goes over the locked items in the shop again (now at wave 16).
 
