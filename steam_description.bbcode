@@ -1,0 +1,33 @@
+The curse level for already cursed items is rerolled.
+
+When a player has the "fish hook" item, all shop items that are locked and already cursed have a chance for the curse to be rerolled.
+The curse factor can only increase and all other normal curse functionality is maintained.
+
+[h3]Options:[/h3]
+[list]
+  [*] Recurse Enabled: enable Recurse behavior (default: true)
+  [*] Recurse Mode
+  [list]
+    [*] 0: off: locked, already cursed items are not modified
+    [*] 1: default reroll: use the normal curse mechanic and replace item when new curse factor is higher than before
+    [*] 2: fixed level-based: use non-randomized level-based curse factor, if it is higher than before
+    [*] 3: asymptotic: roll a new curse factor between the current and the maximal possible value (maximum at wave 20: 110%)
+    [*] 4: set curse factor for already cursed items to current maximum curse level (maximum at wave 20: 110%)
+    [*] 5: random infinite improvement: roll new curse factor between the current value and current + 50%
+    [list]
+      [*] e.g. locked item has 70% curse: new value is rolled between 70% and 120% (can exceed the usually maximum of 110%)
+    [/list]
+  [/list]
+  [*] Recurse Ignore Curse Chance: always recurse locked and already cursed items (default: false)
+  [*] Recurse Debug: enable debug messages for Recurse in godot.log (default: true)
+[/list]
+
+[h3]How it works:[/h3]
+Every time you leave the shop and start the next wave, the items in the shop are checked to see if they contain any locked items. Locked items that are not yet cursed follow the default curse behaviour: based on the curse chance of the obtained fish hooks, items are cursed with a curse level based on the current wave and a random modifier. Each locked and already cursed item has [b]a chance of being recursed[/b], depending on the selected option (see above). As with the default normal curse behavior, this [b]depends on[/b] the total [b]curse chance[/b] listed with the [b]fish hook[/b] items already obtained. Recursing is only guaranteed with a total chance of 100% or higher, which requires at least two cursed fish hooks. Tip: Choose the 'Creature' character to start with one cursed fish hook to more easily recurse any items.
+
+Should respect other mods that change the curse behavior, as the original curse_item() function is called after modifying the already cursed locked items.
+
+Pairs well with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3372276979] Curse Indicator [/url] to keep track of the cursing progress.
+Can be configured with [url=https://steamcommunity.com/workshop/filedetails/?id=2944608034] Mod Options[/url].
+
+Source: [url=https://github.com/lukasstorck/recurse] Recurse on GitHub [/url]
