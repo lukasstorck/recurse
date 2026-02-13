@@ -30,10 +30,9 @@ func recurse_item(item_data: ItemParentData, player_index: int) -> ItemParentDat
 	# find base version of item
 	var base_item
 	if item_data is ItemData:
-		base_item = ItemService.get_item_from_id(item_data.my_id)
+		base_item = ItemService.get_item_from_id(item_data.my_id_hash)
 	else:
-		base_item = ItemService.get_element(ItemService.weapons, item_data.my_id)
-	
+		base_item = ItemService.get_element(ItemService.weapons, item_data.my_id_hash)
 
 	var recursed_item: ItemParentData
 	

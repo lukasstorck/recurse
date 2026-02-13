@@ -7,7 +7,7 @@ func recurse_player_locked_items(player_index: int) -> void:
 	if not ProgressData.mod_settings.RECURSE_ENABLED:
 		return
 
-	var curse_locked_items: int = RunData.get_player_effect("curse_locked_items", player_index)
+	var curse_locked_items: int = RunData.get_player_effect(Keys.curse_locked_items_hash, player_index)
 	var locked_items: Array = RunData.locked_shop_items[player_index]
 
 	var potential_recursable_items = 0
